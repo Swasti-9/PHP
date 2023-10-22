@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+</head>
+<style>
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-fPJ4dTDH3IaDDjogIrYlFXXyln8tz5-YQ&usqp=CAU')
+    }
+  .container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 500px;
+}
+h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+</style>
+<body>
+    <div class="container">
+    <h1>Library Management System</h1>
+    <form action="process.php" method="post">
+    <form id="registrationForm">
+        <label for="book_name">Book Name:</label>
+        <input type="text" name="Book Name" required><br>
+
+        <label for="isbn_no">ISBN No:</label>
+        <input type="text" name="ISBN No" required><br>
+
+        <label for="book_title">Book Title:</label>
+        <input type="text" name="Book Title" required><br>
+
+         <label for="author_name">Author Name:</label>
+        <input type="text" name="Author Name" required><br>
+		
+         <label for="publisher_name">Publisher Name:</label>
+        <input type="text" name="Publisher Name" required><br>
+
+        <input type="submit" name="Submit" value="Add Book">
+    </form>
+    </div>
+</body>
+</html>
+
+<?php
+// Database connection code here (e.g., using mysqli)
+
+if(isset($_POST['submit'])){
+    // Retrieve form data
+    $bookName = $_POST['book_name'];
+    $isbn = $_POST['isbn'];
+    $bookTitle = $_POST['book_title'];
+    $authorName = $_POST['author_name'];
+    $publisherName = $_POST['publisher_name'];
+
+    // Form validation (add your validation logic here)
+
+    // Insert book details into the database
+    // Perform database query here to insert data
+
+    // Delete book record based on ISBN No
+    // Perform delete operation here if needed
+
+    // Update book details based on ISBN No
+    // Perform update operation here if needed
+
+    // Retrieve and display book records in tabular format
+    // Perform database query to retrieve and display data
+
+    // Redirect back to the form after processing
+    header("Location: index.html");
+    exit();
+}
+?>
