@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             background-color: #f2f2f2;
+             margin: 0;
+             padding: 0;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRApZDSWAExmP-P9dlIBzDOUU29QHvMyd9-YQXgvWFRhTA1gbKRUN_e7VPyPR-USWrONz4&usqp=CAU')
+           }
+         .container {
+         background-color: #ffffff;
+         border-radius: 10px;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+         padding: 30px;
+         width: 500px;
+       }
+       h1 {
+             text-align: center;
+             margin-bottom: 20px;
+           }
+       
+           label {
+             font-weight: bold;
+           }
+       
+           input[type="text"],
+           input[type="date"],
+           select {
+             width: 100%;
+             padding: 10px;
+             margin: 5px 0;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             box-sizing: border-box;
+             font-size: 16px;
+           }
+           input[type="submit"],
+            div {
+            width: 20%;
+            height: 50%;
+            padding: 10px;
+            border: 5px solid #ccc;
+            box-sizing: content-box;
+            font-size: 16px; 
+           }
+            
+       </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Employee Management System</h1>
+    <form action="process.php" method="post"  validateForm()">
+      <label for="employee_name">Employee Name:</label>
+      <input type="text" id="name" name="employee_name" required> <br>
+
+      <label for="employee_id">Employee ID:</label>
+      <input type="text" id="id" name="employee_id" required> <br>
+
+      <label for="department_name">Department Name:</label>
+      <input type="text" id="name" name="department_name" required> <br>
+
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="number" name="phone_number" required> <br>
+
+      <label for="joining_date">Joining Date:</label>
+      <input type="date" id="date" name="joining_date" required> <br>
+       
+      <input type="submit" name="insert" value="Insert">
+      <input type="submit" name="delete" value="Delete">
+      <input type="submit" name="update" value="Update">
+       
+    </form>
+    </div>
+    <script>
+        function validateForm() {
+            // Add your form validation logic here
+            // For example, check if Employee ID is a number and phone number is valid
+            return true; // Return false if form validation fails
+        }
+    </script>
+</body>
+</html>
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$database = "employee_management";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (isset($_POST['insert'])) {
+    // Insert operation
+    // Retrieve form data and perform insertion into the database
+} elseif (isset($_POST['delete'])) {
+    // Delete operation
+    // Retrieve Employee ID and delete corresponding record from the database
+} elseif (isset($_POST['update'])) {
+    // Update operation
+    // Retrieve form data and update the corresponding record in the database
+}
+
+// Code to display records in tabular format
+?>
