@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking Management System</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             background-color: #f2f2f2;
+             margin: 0;
+             padding: 0;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqD-BnL9tCFWtaEooG4p2pCuJKyKpld0uETA&usqp=CAU')
+           }
+         .container {
+         background-color: #ffffff;
+         border-radius: 10px;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+         padding: 30px;
+         width: 800px;
+         height: 70%;
+       }
+       h1 {
+             text-align: center;
+             margin-bottom: 20px;
+           }
+       
+           label {
+             font-weight: bold;
+           }
+       
+           input[type="text"],
+           input[type="date"],
+           input[type="email"],
+           select {
+             width: 100%;
+             padding: 10px;
+             margin: 5px 0;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             box-sizing: border-box;
+             font-size: 16px;
+           }
+           input[type="submit"],
+            div {
+            width: 20%;
+            height: 50%;
+            padding: 10px;
+            border: 5px solid #ccc;
+            box-sizing: content-box;
+            font-size: 16px; 
+           }
+            
+       </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Flight Booking Management System</h1>
+    <form action="process.php" method="post"  validateForm()">
+      <label for="passenger_name">Passenger Name:</label>
+      <input type="text" id="name" name="passenger_name" required> <br>
+
+      <label for="from">From:</label>
+      <input type="text" id="from" name="from" required> <br>
+
+      <label for="to">To:</label>
+      <input type="text" id="to" name="to" required> <br>
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required> <br>
+
+      <label for="departure_date">Departure Date:</label>
+      <input type="date" id="date" name="departure_date" required> <br>
+       
+      <label for="arrival_date">Arrival Date:</label>
+      <input type="date" id="date" name="arrival_date" required> <br>
+
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="number" name="phone_number" required> <br>
+
+      <label for="email">Email ID:</label>
+      <input type="email" id="email" name="email" required> <br>
+
+      <input type="submit" name="insert" value="Insert">
+      <input type="submit" name="delete" value="Delete">
+      <input type="submit" name="update" value="Update">
+       
+    </form>
+    </div>
+    <script>
+        function validateForm() {
+            // Add your form validation logic here
+            // For example, check if Employee ID is a number and phone number is valid
+            return true; // Return false if form validation fails
+        }
+    </script>
+</body>
+</html>
+
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$database = "flight_booking";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (isset($_POST['insert'])) {
+    // Insert operation
+    // Retrieve form data and perform insertion into the database
+} elseif (isset($_POST['delete'])) {
+    // Delete operation
+    // Retrieve Phone Number and delete corresponding record from the database
+} elseif (isset($_POST['update'])) {
+    // Update operation
+    // Retrieve form data and update the corresponding record in the database
+}
+
+// Code to display records in tabular format
+?>
+
