@@ -101,30 +101,69 @@
 </body>
 </html>
 
-
 <?php
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$database = "flight_booking";
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Include your database connection here
+    // For demonstration purposes, assuming a simple associative array to store booking data
+    $bookingData = [];
 
-$conn = new mysqli($servername, $username, $password, $database);
+    // Insert Passenger
+    if (isset($_POST['insert'])) {
+        $bookingData[] = [
+            'PassengerName' => $_POST['passengerName'],
+            'FromLocation' => $_POST['fromLocation'],
+            'ToLocation' => $_POST['toLocation'],
+            'Date' => $_POST['date'],
+            'DepartureDate' => $_POST['departureDate'],
+            'ArrivalDate' => $_POST['arrivalDate'],
+            'PhoneNumber' => $_POST['phoneNumber'],
+            'Email' => $_POST['email'],
+        ];
+    }
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Delete Passenger
+    if (isset($_POST['delete'])) {
+        $deletePhoneNumber = $_POST['deletePhoneNumber'];
+        // Implement deletion logic here, e.g., using array_filter() to remove matching records
+        $bookingData = array_filter($bookingData, function ($booking) use ($deletePhoneNumber) {
+            return $booking['PhoneNumber'] !== $deletePhoneNumber;
+        });
+    }
+
+    // Update Passenger (not implemented in this example)
+    // Implement the logic for updating a passenger based on Phone Number
+
+    // Display Passenger Details
+    echo '<h2>Passenger Details</h2>';
+    echo '<table border="1">
+            <tr>
+                <th>Passenger Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Departure Date</th>
+                <th>Arrival Date</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>';
+
+    foreach ($bookingData as $booking) {
+        echo '<tr>
+                <td>' . $booking['PassengerName'] . '</td>
+                <td>' . $booking['FromLocation'] . '</td>
+                <td>' . $booking['ToLocation'] . '</td>
+                <td>' . $booking['Date'] . '</td>
+                <td>' . $booking['DepartureDate'] . '</td>
+                <td>' . $booking['ArrivalDate'] . '</td>
+                <td>' . $booking['PhoneNumber'] . '</td>
+                <td>' . $booking['Email'] . '</td>
+              </tr>';
+    }
+
+    echo '</table>';
 }
-
-if (isset($_POST['insert'])) {
-    // Insert operation
-    // Retrieve form data and perform insertion into the database
-} elseif (isset($_POST['delete'])) {
-    // Delete operation
-    // Retrieve Phone Number and delete corresponding record from the database
-} elseif (isset($_POST['update'])) {
-    // Update operation
-    // Retrieve form data and update the corresponding record in the database
-}
-
-// Code to display records in tabular format
 ?>
+
+
 
